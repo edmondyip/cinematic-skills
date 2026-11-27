@@ -10,6 +10,27 @@ Disturb the waves, move the sun and watch floating lights illuminate the bed. Th
 
 [Underwater illumination after dark](media/lagoon-night.webp) · [Corrected Glasswater source](https://github.com/edmondyip/glasswater/tree/250daa455f3bf66718ec52e893d963644844e00c)
 
+## Quick Start
+
+From your project root, run the Skills CLI with Node.js and npm available.
+
+```sh
+npx skills add edmondyip/cinematic-skills
+```
+
+The installer discovers the six skills and lets you select which ones to install and which coding agent to use. The recording shows the discovery and selection steps.
+
+![Terminal recording of the Skills CLI discovering and selecting Cinematic Skills](media/install.gif)
+
+### Install individual skills
+
+```sh
+npx skills add edmondyip/cinematic-skills --skill interactive-ocean
+npx skills add edmondyip/cinematic-skills --skill underwater-caustics
+```
+
+Pass any name from the [catalogue](#skill-catalogue) to `--skill`. The [manual installation steps](#manual-installation) show where to put the files if you prefer to copy them yourself.
+
 ## Skill catalogue
 
 | Skill | What it implements | Minimal example |
@@ -21,7 +42,28 @@ Disturb the waves, move the sun and watch floating lights illuminate the bed. Th
 | [floating-object-physics](skills/floating-object-physics/SKILL.md) | Spring heave, slope-driven drift and horizontal sphere contacts | [Contacts and heave](skills/floating-object-physics/scripts/example.mjs) |
 | [procedural-day-night](skills/procedural-day-night/SKILL.md) | Continuous artistic celestial clock, disk clipping and horizon-safe fog | [Four horizon crossings](skills/procedural-day-night/scripts/example.mjs) |
 
-## Install in a coding agent
+## Example prompts
+
+Name the installed skill in your prompt and give the agent the scene or code it should work on.
+
+| Skill | Prompt to try |
+| --- | --- |
+| `interactive-ocean` | Use interactive-ocean to add pointer wakes to my WebGL 2 pond. Keep the existing swell and verify that a fast drag leaves a continuous trail. |
+| `underwater-caustics` | Use underwater-caustics to project sunlight onto my sloped pool floor. Verify that the pattern stays fixed in world space when the camera moves and shifts when I change the depth. |
+| `refracted-shadows` | Use refracted-shadows to make my floating markers cast shadows on the seabed. Verify that blockers on either side of the surface work and that a blocker beyond the bed does not contribute. |
+| `underwater-lighting` | Use underwater-lighting to put a blue emitter under each buoy and light the bed. Verify that the light falls off with distance and that changing water clarity affects the result. |
+| `floating-object-physics` | Use floating-object-physics to make three spheres follow my existing water-height function. Verify that they bob with the waves and separate after a head-on collision. |
+| `procedural-day-night` | Use procedural-day-night to drive my sky, direct lights and water reflections from one clock. Capture the four sun and moon crossings and check for bright horizon bands. |
+
+### Combine skills in one project
+
+```sh
+npx skills add edmondyip/cinematic-skills --skill interactive-ocean --skill floating-object-physics --skill procedural-day-night
+```
+
+In one prompt, name each skill and how they should connect. For example, “Use interactive-ocean for pointer wakes, pass the same height sampler to floating-object-physics, and drive the lighting with procedural-day-night. Verify that a ripple moves a float and the rendered water changes from day to night.” The [tide tank](#run-and-combine) shows this setup in a small WebGL 2 scene.
+
+## Manual installation
 
 The folders use the [Agent Skills format](https://agentskills.io/specification). Copy a complete skill folder to the agent’s project skill directory so its scripts stay with the instructions. Run these commands from the target project. Set `skill_dir=.agents/skills` for [Codex](https://developers.openai.com/codex/skills/) or `skill_dir=.claude/skills` for [Claude Code](https://code.claude.com/docs/en/skills).
 
@@ -46,7 +88,7 @@ for source in "$library"/skills/*; do
 done
 ```
 
-For another tool that supports Agent Skills, use its documented discovery directory. In your prompt, name the skill and state the material, geometry or input system it should connect to. For example, ask to “use interactive-ocean to add a continuous pointer wake to this existing water mesh.”
+For another tool that supports Agent Skills, use its documented discovery directory.
 
 ## Run and combine
 
