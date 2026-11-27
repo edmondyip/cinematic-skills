@@ -108,3 +108,10 @@ Match a Y-up world and use one clock for rendering and simulation. Pass the disp
 The reference optics use geometric approximations. The water is a height field, and float contacts operate in the horizontal plane. [Verification and integration limits](VERIFICATION.md)
 
 [MIT licence](LICENSE) · Original models and showcase assets from Edmond Yip’s [Glasswater project](https://github.com/edmondyip/glasswater).
+
+## Ownership and licensing
+
+© 2026 Edmond Yip<br>
+Created with ChatGPT · Engineered with Codex
+
+The library is available under the [MIT License](LICENSE). Each skill folder includes the same MIT notice for individual installation. Credits for adapted code and original showcase assets remain with Glasswater.
