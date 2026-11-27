@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tide tank · Cinematic Skills</title>
+<style>
+  :root {color-scheme:dark;background:#0b1621;color:#e9f5f4;font:16px system-ui}
+  main {max-width:960px;margin:2rem auto;padding:0 1rem}
+  h1 {font:2.5rem Georgia;margin:0 0 .45rem}
+  p {color:#adc6cb;margin:.5rem 0 1.25rem}
+  canvas {display:block;width:100%;height:auto;border:1px solid #42626f;touch-action:none}
+  .controls {display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;margin-top:1rem}
+  label {display:flex;align-items:center;gap:.5rem} input {width:min(9rem,32vw)}
+  button {padding:.4rem .7rem}
+</style>
+<main>
+  <h1>Tide tank</h1>
+  <p>A finite water tray with three floating props. Tap the surface to launch a ripple.</p>
+  <canvas width="960" height="540" aria-label="Oblique view of a shallow water tray and three floating markers"></canvas>
+  <div class="controls">
+    <button type="button" id="ripple">Send a ripple</button>
+    <label>Time of day <input id="hour" type="range" min="0" max="24" step=".05" value="12"><output id="time">12.00 h</output></label>
+    <output id="status" role="status"></output>
+  </div>
+</main>
+<script type="module" src="./tide-tank.mjs"></script>
+</html>
