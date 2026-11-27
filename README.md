@@ -18,7 +18,7 @@ From your project root, run the Skills CLI with Node.js and npm available.
 npx skills add edmondyip/cinematic-skills
 ```
 
-The installer discovers the six skills and lets you select which ones to install and which coding agent to use. The recording shows the discovery and selection steps.
+The CLI discovers the six skills. The recording shows how to select skills and an agent in interactive mode. If the CLI detects your agent automatically, append `--list` to preview the catalogue or `--skill <name>` to install a specific skill.
 
 ![Terminal recording of the Skills CLI discovering and selecting Cinematic Skills](media/install.gif)
 
